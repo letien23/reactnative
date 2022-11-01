@@ -3,6 +3,8 @@ import { Button, View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './src/components/Home';
+import Detail from './src/components/Detail';
 
 function SettingsScreen({ navigation }) {
   return (
@@ -28,53 +30,6 @@ function ProfileScreen({ navigation }) {
   );
 }
 
-function Notice({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Notice Screen</Text>
-      <Text>Hello</Text>
-    </View>
-  );
-}
-function Add({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Add Screen</Text>
-      <Text>Hello</Text>
-    </View>
-  );
-}
-function Cart({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Cart Screen</Text>
-      <Text>Hello</Text>
-    </View>
-  );
-}
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
-
-function DetailsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Details')}
-      />
-    </View>
-  );
-}
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -83,84 +38,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen
-          name="HomePage"
-          component={HomeScreen}
-          options={{
-            tabBarLabel: '',
-            tabBarIcon: ({ color, size }) => (
-              <Image
-                style={{ width: size, height: size }}
-                source={require('./images/home.png')}
-              />
-
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Notice"
-          component={Notice}
-          options={{
-            tabBarLabel: '',
-            tabBarIcon: ({ color, size }) => (
-              <Image
-                style={{ width: size, height: size }}
-                source={require('./images/notice.png')}
-              />
-
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Add"
-          component={Add}
-          options={{
-            tabBarLabel: '',
-            tabBarIcon: ({ color, size }) => (
-              <Image
-                style={{ width: size, height: size }}
-                source={require('./images/add.png')}
-              />
-
-            ),
-          }}
-        /><Tab.Screen
-          name="Cart"
-          component={Cart}
-          options={{
-            tabBarLabel: '',
-            tabBarIcon: ({ color, size }) => (
-              <Image
-                style={{ width: size, height: size }}
-                source={require('./images/cart.png')}
-              />
-            ),
-          }}
-        /><Tab.Screen
-          name="Profile"
-          component={SettingsScreen}
-          options={{
-            tabBarLabel: '',
-            tabBarIcon: ({ color, size }) => (
-              <Image
-                style={{ width: size, height: size }}
-                source={require('./images/profile.png')}
-              />
-            ),
-          }}
-        />
-        
         <Tab.Screen name="Home">
           {() => (
             <HomeStack.Navigator>
-              <HomeStack.Screen name="Home" component={HomeScreen} />
-              <HomeStack.Screen name="Details" component={DetailsScreen} />
+              <HomeStack.Screen name="Home" component={Home} />
+              <HomeStack.Screen name="Details" component={Detail} />
             </HomeStack.Navigator>
           )}
-
         </Tab.Screen>
         <Tab.Screen name="User">
-
           {() => (
             <SettingsStack.Navigator>
               <SettingsStack.Screen
