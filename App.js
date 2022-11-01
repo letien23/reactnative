@@ -149,7 +149,7 @@ export default function App() {
             ),
           }}
         />
-        {/* 
+        
         <Tab.Screen name="Home">
           {() => (
             <HomeStack.Navigator>
@@ -158,8 +158,8 @@ export default function App() {
             </HomeStack.Navigator>
           )}
 
-        </Tab.Screen> */}
-        {/* <Tab.Screen name="User">
+        </Tab.Screen>
+        <Tab.Screen name="User">
 
           {() => (
             <SettingsStack.Navigator>
@@ -170,7 +170,7 @@ export default function App() {
               <SettingsStack.Screen name="Profile" component={ProfileScreen} />
             </SettingsStack.Navigator>
           )}
-        </Tab.Screen> */}
+        </Tab.Screen>
 
       </Tab.Navigator>
     </NavigationContainer>
